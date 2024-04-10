@@ -9,4 +9,12 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
+   
+   
+    public function Controller ( Request $request)
+    {
+        $email = $request->input('email');
+        $password = $request->input('password');
+    }
+
 }

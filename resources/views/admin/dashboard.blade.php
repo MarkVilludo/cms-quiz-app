@@ -22,9 +22,9 @@
   var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Data 1', 'Data 2', 'Data 3', 'Data 4'],
+      labels: ['1st Year', '2nd Year', '3rd Year', '4th Years'],
       datasets: [{
-        label: 'Statistic for Quiz App',
+        label: 'Statistic of the number of students per year level',
         data: [10, 20, 30, 40],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',

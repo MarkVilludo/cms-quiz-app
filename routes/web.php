@@ -1,7 +1,8 @@
 <?php
+use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\{AdminController, LoginController};
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,15 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', function () {
+
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index']);
+    Route::get('/dashboard', [AdminController::class, 'dashboard']);
+});
+
+
+Route::get('/login', function () {
     return redirect('login');
 });
 
@@ -22,5 +31,7 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/admin', [AdminController::class, 'index']);
-Route::get('/dashboard', [AdminController::class, 'dashboard']);
+Route::get('/logout', function () {
+    Auth::logout(); // Logout the currently authenticated user
+    return redirect('/login'); // Redirect to the login page after logout
+})->name('logout');

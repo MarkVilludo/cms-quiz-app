@@ -16,11 +16,12 @@
                 <div class="card-header">
                 <h3 class="card-title">Login</h3>
                 </div>
-                <form action="{{route('post.login')}}" method="post">
+                <form action="{{ route('login') }}" method="post">
+                    @csrf
                 <div class="card-body">
                     <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Enter email">
                     </div>
                     <div class="form-group">
                     <label for="password">Password</label>
@@ -34,7 +35,9 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Sign In</button>
+                <form action="/dashboard.blade" method="post">
+                        <button type="submit" class="btn btn-primary">Sign In</button>
+                </form>
                 </div>
                 </form>
             </div>
